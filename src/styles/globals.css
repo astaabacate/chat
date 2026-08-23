@@ -1,0 +1,457 @@
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #818cf8;
+  --background-color: #0f172a;
+  --text-color: #f1f5f9;
+  --border-color: #1e293b;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, var(--background-color) 0%, #1a1f35 100%);
+}
+
+.app-header {
+  padding: 16px;
+  background-color: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.app-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.page-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.bottom-nav {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--border-color);
+  background-color: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 24px;
+  transition: all 0.2s ease;
+  border-top: 2px solid transparent;
+  margin-top: -1px;
+}
+
+.nav-btn:active,
+.nav-btn.active {
+  background-color: rgba(99, 102, 241, 0.1);
+  border-top-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Messages */
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.message {
+  display: flex;
+  gap: 8px;
+  animation: slideIn 0.2s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.own {
+  justify-content: flex-end;
+}
+
+.message-bubble {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  word-wrap: break-word;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.message.other .message-bubble {
+  background-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.message.own .message-bubble {
+  background-color: var(--primary-color);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message-time {
+  font-size: 12px;
+  color: rgba(241, 245, 249, 0.5);
+  padding: 0 16px;
+  margin-top: 4px;
+}
+
+/* Input */
+.input-container {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: rgba(15, 23, 42, 0.6);
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+  padding-bottom: max(12px, calc(env(safe-area-inset-bottom) + 12px));
+}
+
+.input-field {
+  flex: 1;
+  background-color: var(--border-color);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 24px;
+  padding: 10px 16px;
+  color: var(--text-color);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: var(--primary-color);
+  background-color: rgba(30, 41, 59, 0.8);
+}
+
+.input-field::placeholder {
+  color: rgba(241, 245, 249, 0.5);
+}
+
+.send-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.send-btn:active {
+  transform: scale(0.95);
+  background-color: var(--secondary-color);
+}
+
+/* Lock Screen */
+.lock-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 20px;
+  text-align: center;
+}
+
+.lock-icon {
+  font-size: 64px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.password-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 16px;
+  background-color: var(--border-color);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-color);
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 6px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.password-input:focus {
+  border-color: var(--primary-color);
+}
+
+.unlock-btn {
+  padding: 12px 32px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.unlock-btn:active {
+  transform: scale(0.98);
+  background-color: var(--secondary-color);
+}
+
+/* Settings */
+.settings-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.settings-section {
+  background-color: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-label {
+  font-size: 12px;
+  color: rgba(241, 245, 249, 0.6);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.settings-input {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: var(--border-color);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 14px;
+  outline: none;
+}
+
+.settings-input:focus {
+  border-color: var(--primary-color);
+}
+
+.color-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.color-option {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.color-option.selected {
+  border-color: white;
+  transform: scale(1.1);
+}
+
+/* Call Screen */
+.call-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--background-color) 0%, #1a1f35 100%);
+}
+
+.call-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  animation: pulse 2s infinite;
+}
+
+.call-status {
+  font-size: 16px;
+  color: rgba(241, 245, 249, 0.7);
+  margin-top: -16px;
+}
+
+.call-timer {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.call-controls {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.control-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--border-color);
+  color: var(--text-color);
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.control-btn:active {
+  transform: scale(0.9);
+}
+
+.control-btn.danger {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: rgba(241, 245, 249, 0.6);
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% { opacity: 0.3; }
+  30% { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-height: 600px) {
+  .app-header h1 {
+    font-size: 18px;
+  }
+
+  .messages-container {
+    padding: 12px;
+    gap: 6px;
+  }
+
+  .input-container {
+    padding: 8px 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .messages-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .input-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
