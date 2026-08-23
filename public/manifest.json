@@ -1,13 +1,12 @@
 {
   "name": "Chat App",
   "short_name": "Chat",
-  "description": "Aplicativo de chat privado e seguro",
+  "description": "Aplicativo de chat privado com disfarce",
   "start_url": "/",
-  "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "background_color": "#0f172a",
   "theme_color": "#6366f1",
-  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -19,16 +18,7 @@
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "categories": ["productivity"],
-  "screenshots": [
-    {
-      "src": "/screenshot-1.png",
-      "sizes": "540x720",
-      "type": "image/png",
-      "form_factor": "narrow"
+      "purpose": "any"
     }
   ]
 }
